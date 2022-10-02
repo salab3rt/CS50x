@@ -1,0 +1,12 @@
+sort1 uses:Bubble Sort
+
+How do you know?: Having an O(n^2) and an Ω(n), the difference runtime between unsorted and sorted numbers was roughly 10x more (~7 vs ~0.7 seconds).
+
+sort2 uses: Merge Sort
+
+How do you know?: Having an O(n log n) and an Ω(n log n), the runtime between random, reversed, and sorted on average is about the same. And it has lower runtime than sort1 and sort2.
+
+sort3 uses: Selection Sort
+
+How do you know?: Selection sort has an O(n^2) and an Ω(n^2).
+Random, reversed and sorted files runtimes are roughly the same, but exponentially slower as data gets bigger (~3sec for 50000 vs ~0.07sec for 5000), all while being slower than sort2

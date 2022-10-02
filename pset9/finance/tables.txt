@@ -1,0 +1,31 @@
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    username TEXT NOT NULL,
+    hash TEXT NOT NULL,
+    cash REAL DEFAULT 10000.00
+);
+
+CREATE UNIQUE INDEX username ON users (username);
+
+
+CREATE TABLE transactions (
+    id INTEGER NOT NULL,
+    action TEXT NOT NULL,
+    symbol TEXT NOT NULL,
+    name TEXT NOT NULL,
+    quantity INTEGER NOT NULL,
+    cost REAL NOT NULL,
+    year NUMERIC NOT NULL,
+    month NUMERIC NOT NULL,
+    day NUMERIC NOT NULL,
+    time DATETIME NOT NULL,
+    FOREIGN KEY(id) REFERENCES users(id)
+);
+
+ CREATE INDEX id ON transactions (id);
+
+
+SELECT id, symbol, SUM(quantity) FROM transactions GROUP BY symbol;
+
+SELECT symbol, SUM(quantity) as quantity FROM transactions WHERE id = 1 GROUP BY symbol ORDER BY symbol ASC;
+

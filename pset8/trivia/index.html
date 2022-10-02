@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script src="results.js">
+            // TODO: Add code to check answers to questions
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>Of all animals, which one has the biggest eyes?</h3>
+                <p class = "checker" id="check1"> <br></p>
+                <button class="button" type="submit" onclick="check(event);">Ostrich</button>
+                <button class="button" type="submit" onclick="check(event);">Elephant</button>
+                <button class="button" type="submit" onclick="check(event);">Blue Whale</button>
+                <button class="button" type="submit" onclick="check(event);">Giraffe</button>
+                <button class="button" type="submit" onclick="check(event);">Giant Squid</button>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>What is the number of universally recognized countries</h3>
+                <p class = "checker" id="check2"> <br></p>
+                <form id="q2" onsubmit="return false">
+                    <input autocomplete="off" id="answer" placeholder="Answer" type="text">
+                    <input class="button" type="submit" onclick="check_1();">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

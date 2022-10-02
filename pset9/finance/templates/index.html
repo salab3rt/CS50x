@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+
+<script type="text/javascript" src="static/index.js"></script>
+<script>var upd_data = {{portfolio | tojson}};</script>
+          <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center h-100">
+              <div class="col-12 col-md-8 col-lg-6 col-xl-10">
+                <div class="card text-white" style="border-radius: 1rem;">
+                  <div class="card-body text-center" id="card">
+                    <div class="mb-md- mt-md-4">
+                      <h2 class="fw-bold mb-2">{{session["username"] | capitalize}}'s portfolio</h2>
+                      <input class="form-control form-control-lg ms-auto" debounce="300" autocomplete="off" id="query" autofocus placeholder="Browse your stocks" type="text">
+                        {% if portfolio %}
+                        <table class="table" style="overflow: scroll;">
+                          <thead>
+                            <th class="text-light">Symbol</th>
+                            <th class="text-light">Name</th>
+                            <th class="text-light">Shares</th>
+                            <th class="text-light">Price</th>
+                            <th class="text-light">Total</th>
+                          </thead>
+                          <tbody class="text-light" id="qdata"></tbody>
+                          <tbody class="text-light" id="data">
+                            {% for row in portfolio %}
+                            {% if row["total_qty"] > 0 %}
+                            <tr>
+                              <td>{{row["symbol"]}}</td>
+                              <td>{{row["name"]}}</td>
+                              <td>{{row["total_qty"]}}</td>
+                              <td>{{row["price"] | usd}}</td>
+                              {% set total_share = (row["total_qty"] * row["price"]) %}
+                              <td>{{total_share | usd}}</td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                          </tbody>
+                          <script>search()</script>
+                          <tbody class="text-light">
+                              <tr>
+                                  <td class="border-0"></td>
+                                  <td class="border-0"></td>
+                                  <td class="border-0"></td>
+                                  <td><strong>Cash:</strong></td>
+                                  <td>{{usr_cash[0]["cash"] | usd}}</td>
+                                </tr>
+                                <tr>
+                                  <td class="border-0"></td>
+                                  <td class="border-0"></td>
+                                  <td class="border-0"></td>
+                                  <td><strong>Total:</strong></td>
+                                  <td>{{(usr_cash[0]["cash"] + total) | usd}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            {% else %}
+                              <h5 style="text-align: left;">AWW its empty..</h5>
+                              <hr style="height: 2px;">
+                              <p style="text-align: right;">Cash:{{(usr_cash[0]["cash"] + total) | usd}}</p>
+                            {% endif %}
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+{% endblock %}

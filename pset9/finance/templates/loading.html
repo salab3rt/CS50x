@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Loading
+{% endblock %}
+
+{% block main %}
+
+<form>
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card text-white" style="border-radius: 1rem;">
+            <div class="card-body text-center" id="card">
+              <div class="mb-md- mt-md-4">
+                <h2 class="fw-bold mb-2 text-capitalize">Welcome {{user}}</h2>
+                <div class="form-outline form-white mb-4">
+                    <p class="text-white-50 mb-4 list">Loading your assets</p>
+                  <br>
+                  <div class="container-fluid center-block" style="max-width: fit-content;">
+                    <div class="loader justify-content-center">
+                      <script>
+                        function navigate(){
+                            window.location.href = '/$';
+                        }
+                        fetch('/$').then(navigate);
+                      </script>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}

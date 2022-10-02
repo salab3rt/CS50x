@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+
+<script type="text/javascript" src="static/cash.js"></script>
+        <form onsubmit="return false;">
+          <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card text-white" style="border-radius: 1rem;">
+                  <div class="card-body text-center" id="card">
+                    <div class="mb-md- mt-md-4">
+                      <h2 class="fw-bold mb-2 text-uppercase">CA$H</h2>
+                      <p class="text-white-50 mb-4 list">Click the button the get more</p>
+                      <div class="form-outline form-white mb-4">
+                        <span class="loader_coin" id="coin"></span>
+                        <br>
+                        <br>
+                        <div class="container-fluid center-block" style="max-width: fit-content;">
+                          <div id="flash" style="height: 27px;">
+
+                          </div>
+                          <br>
+                          </div class="cash" id="cash">
+                            <button class="btn text-light btn-outline-light btn-lg px-5"" id="btnusr1">Cash: {{cash[0]['cash'] | usd}}</button>
+                          </div>
+                          <script>coin();</script>
+                          <script>cash_rand();</script>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+{% endblock %}

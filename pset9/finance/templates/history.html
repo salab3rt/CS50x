@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  History
+{% endblock %}
+
+{% block main %}
+
+<script type="text/javascript" src="static/history.js"></script>
+<script>var upd_data = {{transactions | tojson}};</script>
+          <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center h-100">
+              <div class="col-12 col-md-8 col-lg-8 col-xl-10">
+                <div class="card text-white" style="border-radius: 1rem;">
+                  <div class="card-body text-center" id="card">
+                    <div class="mb-md- mt-md-4">
+                      <h2 class="fw-bold mb-2">{{session["username"] | capitalize}}'s transactions</h2>
+                      <input class="form-control form-control-lg ms-auto" debounce="300" autocomplete="off" id="query" autofocus placeholder="Browse your stocks" type="text">
+                        {% if transactions %}
+                        <table class="table" style="overflow: scroll;">
+                            <thead>
+                                <th class="text-light">Action</th>
+                                <th class="text-light">Symbol</th>
+                                <th class="text-light">Name</th>
+                                <th class="text-light">Shares</th>
+                                <th class="text-light">Price</th>
+                                <th class="text-light">Total</th>
+                                <th class="text-light">Date</th>
+                            </thead>
+                          </table>
+                          <div style="width:100%;overflow-y:auto; max-height:60vh;">
+                            <table class="table">
+                              <tbody class="text-light" id="qdata"></tbody>
+                              <tbody class="text-light" id="data">
+                              {% for row in transactions %}
+                              {% if row["action"] == 'BUY' %}
+                                <tr class="buy">
+                                {% else %}
+                                <tr class="sell">
+                              {% endif %}
+                                  <td>{{row["action"]}}</td>
+                                  <td>{{row["symbol"]}}</td>
+                                  <td>{{row["name"]}}</td>
+                                  {% if row["quantity"] < 0 %}
+                                      <td>{{row["quantity"] * -1}}</td>
+                                  {% else %}
+                                      <td>{{row["quantity"]}}</td>
+                                  {% endif %}
+                                  {% if (row["cost"] / row["quantity"]) < 0 %}
+                                      <td>{{(-row["cost"] / row["quantity"]) | usd}}</td>
+                                  {% else %}
+                                      <td>{{(row["cost"] / row["quantity"]) | usd}}</td>
+                                  {% endif %}
+                                  <td>{{row["cost"] | usd}}</td>
+                                  <td>{{row["year"]}}/{{row["month"]}}/{{row["day"]}} -> {{row["time"]}}</td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                          <script>search();</script>
+                          </table>
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+{% endblock %}
