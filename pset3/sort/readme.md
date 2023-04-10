@@ -1,4 +1,4 @@
-<h1>CS50x 2022 sort lab</h1>
+<h1>CS50x 2022 Lab 3 - sort</h1>
 
 https://cs50.harvard.edu/x/2022/labs/3/
 
