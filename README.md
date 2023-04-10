@@ -33,3 +33,5 @@ https://cs50.harvard.edu/x/2022/license/
 | <a href="https://github.com/salab3rt/CS50x/tree/main/pset8/trivia">cs50/labs/2022/x/trivia</a>                      | 89867004  | salab3rt        | Thu, 08 Sep 2022 | 1             | 1          |                    |
 | <a href="https://github.com/salab3rt/CS50x/tree/main/pset9/finance">cs50/problems/2022/x/finance</a>                 | 89867004  | salab3rt        | Sun, 02 Oct 2022 | 20            | 20         | 0.9986684|
 |                                              |
+
+<h6>Table made with https://csvtomd.com/</h6>
