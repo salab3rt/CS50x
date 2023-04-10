@@ -1,4 +1,4 @@
-<h1>CS50x 2022 Credit problem set</h1>
+<h1>CS50x 2022 problem set 1 - Credit </h1>
 
 https://cs50.harvard.edu/x/2022/psets/1/credit/
 
