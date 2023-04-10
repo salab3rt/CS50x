@@ -1,4 +1,4 @@
-<h1>CS50x 2022 plurality problem set</h1>
+<h1>CS50x 2022 Problem set 3 - plurality</h1>
 
 https://cs50.harvard.edu/x/2022/psets/3/plurality/
 
